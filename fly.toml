@@ -1,0 +1,8 @@
+app = "monitoring-app"
+primary_region = "ams"
+
+[build]
+dockerfile = "./Dockerfile"
+
+[env]
+GF_SECURITY_ADMIN_PASSWORD = "admin"

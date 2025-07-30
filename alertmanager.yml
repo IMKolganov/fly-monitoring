@@ -1,0 +1,13 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: 'telegram'
+  group_wait: 10s
+  repeat_interval: 30m
+
+receivers:
+  - name: 'telegram'
+    webhook_configs:
+      - url: 'https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage?chat_id=<YOUR_CHAT_ID>'
+        send_resolved: true
