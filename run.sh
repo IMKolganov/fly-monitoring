@@ -9,8 +9,8 @@
 
 /usr/sbin/grafana-server \
   --homepath=/usr/share/grafana \
-  --config=/etc/grafana/grafana.ini \
-  --http.port=80 &
+  --config=/etc/grafana/grafana.ini &
+
 
 
 nginx -g "daemon off;"
