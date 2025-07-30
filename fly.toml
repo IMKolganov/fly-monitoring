@@ -8,22 +8,9 @@ dockerfile = "./Dockerfile"
 GF_SECURITY_ADMIN_PASSWORD = "admin"
 
 [[services]]
-  internal_port = 3000
+  internal_port = 80
   protocol = "tcp"
 
   [[services.ports]]
-    port = 3000
-
-[[services]]
-  internal_port = 9090
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 9090
-
-[[services]]
-  internal_port = 9093
-  protocol = "tcp"
-
-  [[services.ports]]
-    port = 9093
+    port = 443
+    handlers = ["tls", "http"]

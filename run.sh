@@ -11,5 +11,4 @@
   --homepath=/usr/share/grafana \
   --config=/etc/grafana/grafana.ini &
 
-# Keep container alive
-tail -f /dev/null
+nginx -g "daemon off;"

@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y wget curl supervisor && \
+    apt-get install -y wget curl supervisor nginx && \
     useradd -m monitoring
 
 # Prometheus
@@ -19,11 +19,14 @@ RUN wget https://github.com/prometheus/alertmanager/releases/download/v0.27.0/al
 RUN wget https://dl.grafana.com/oss/release/grafana_10.4.2_amd64.deb && \
     apt install -y ./grafana_10.4.2_amd64.deb
 
+# Copy configs
 COPY prometheus.yml /opt/prometheus/prometheus.yml
 COPY alertmanager.yml /opt/alertmanager/alertmanager.yml
+COPY nginx.conf /etc/nginx/sites-available/default
 COPY run.sh /run.sh
+
 RUN chmod +x /run.sh
 
-EXPOSE 9090 3000 9093
+EXPOSE 80
 
 CMD ["/run.sh"]
